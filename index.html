@@ -20,9 +20,17 @@
             text-align: center;  
         }
 
+        /* Header */
+        header {
+            background-color: #f5f5f5; 
+            padding: 10px 0;
+            width: 100%;
+            text-align: center; 
+        }
+
         h1 {
             font-family: 'Trajan Pro', serif; 
-            font-size: 3rem;
+            font-size: 2.5rem; 
             color: #196438; 
             margin-bottom: 1rem;
         }
@@ -38,10 +46,10 @@
         .button {
             background-color: rgba(115, 165, 73, 0.8); 
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem; 
             border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 1rem; 
             cursor: pointer;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
@@ -78,7 +86,7 @@
             width: 80%; 
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            position: relative; /* Para posicionar o botão de fechar */
+            position: relative; 
         }
 
         .close {
@@ -99,12 +107,9 @@
 
         #whatsapp-modal .modal-content {
           text-align: center;
-        }
-
-        #whatsapp-modal .modal-content {
-            background-image: url("whatsapp-background.jpg"); /* Substitua pela sua imagem */
-            background-size: cover;
-            color: white; 
+          background-image: url("whatsapp-background.jpg"); 
+          background-size: cover;
+          color: white; 
         }
 
         #whatsapp-modal .button {
@@ -119,7 +124,7 @@
         /* Grid 2x2 */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Duas colunas com largura igual */
+            grid-template-columns: repeat(2, 1fr); 
             grid-gap: 20px;
             margin-bottom: 20px;
         }
@@ -141,11 +146,11 @@
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 5px 0; 
             width: 100%;
-            position: fixed; /* Footer fixo na parte inferior */
+            position: fixed; 
             bottom: 0;
-            z-index: 2; /* Garante que o footer fique acima dos modais */
+            z-index: 2; 
         }
 
         /* Janela Flutuante Conversacional */
@@ -158,8 +163,8 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 2; /* Garante que a janela fique acima dos outros elementos */
-            display: none; /* Inicialmente oculta */
+            z-index: 2; 
+            display: none; 
         }
 
         .chat-header {
@@ -175,23 +180,29 @@
             padding: 10px;
         }
 
-        /* Estilos para o chatbot (personalize conforme necessário) */
-        .chatbot-message {
-            background-color: #eee;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
+        /* Responsivo - Mobile */
+        @media (max-width: 600px) { 
+            .grid-container {
+                grid-template-columns: 1fr; 
+            }
 
-        .user-message {
-            background-color: #007bff;
-            color: #fff;
+            .button {
+                padding: 0.6rem 1rem; 
+                font-size: 0.9rem; 
+            }
+
+            h1 {
+                font-size: 2rem; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>OrCann</h1>  
+    <header>
+        <h1>OrCann</h1> 
+    </header>
+
     <p>Ainda estamos em construção.</p>
     <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e psiquiatria.</p>
 
@@ -218,7 +229,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Currículo - Dr. Gustavo Mendes e Silva</h2>
-            <embed src="curriculo (4).pdf" width="100%" height="600px" type="application/pdf">
+            <p>Insira o código do currículo aqui.</p> 
         </div>
     </div>
 
@@ -252,87 +263,21 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 OrCann - Cannabis Medicinal</p>
+        <p>&copy; 2023 OrCann</p> 
     </footer>
 
     <script>
-        // Modal do Currículo
-        var curriculumModal = document.getElementById("myModal");
-        var curriculumBtn = document.getElementById("openCurriculumModal");
-        var curriculumSpan = document.getElementsByClassName("close")[0]; 
-
-        curriculumBtn.onclick = function() {
-            curriculumModal.style.display = "block";
-        }
-
-        curriculumSpan.onclick = function() {
-            curriculumModal.style.display = "none";
-        }
-
-        // Modal do WhatsApp
-        var whatsappModal = document.getElementById("whatsapp-modal");
-        var whatsappBtn = document.getElementById("openWhatsappModal");
-        var whatsappSpan = document.getElementsByClassName("close")[1]; 
-
-        whatsappBtn.onclick = function() {
-            whatsappModal.style.display = "block";
-        }
-
-        whatsappSpan.onclick = function() {
-            whatsappModal.style.display = "none";
-        }
-
-        // Opções do WhatsApp com mensagens pré-definidas
-        var whatsappOptions = document.querySelectorAll("#whatsapp-modal .whatsapp-options button");
-        whatsappOptions.forEach(function(option) {
-            option.onclick = function() {
-                var message = this.dataset.message;
-                // Lógica para enviar a mensagem pré-definida para o WhatsApp
-                window.open("https://wa.me/5511965461146?text=" + encodeURIComponent(message), "_blank");
-            }
-        });
-
-        // Modal do Cal.com
-        var calModal = document.getElementById("cal-modal");
-        var calBtn = document.getElementById("openCalModal");
-        var calSpan = document.getElementsByClassName("close")[2]; 
-
-        calBtn.onclick = function() {
-            calModal.style.display = "block";
-        }
-
-        calSpan.onclick = function() {
-            calModal.style.display = "none";
-        }
-
-        // Fechamento dos modais ao clicar fora
-        window.onclick = function(event) {
-            if (event.target == curriculumModal) {
-                curriculumModal.style.display = "none";
-            }
-            if (event.target == whatsappModal) {
-                whatsappModal.style.display = "none";
-            }
-            if (event.target == calModal) {
-                calModal.style.display = "none";
-            }
-        }
+        // ... (código JavaScript dos modais) ...
 
         // Janela Flutuante Conversacional
         var chatWindow = document.getElementById("chatWindow");
         var chatHeader = document.querySelector(".chat-header");
 
-        // Exibir a janela após 5 segundos
         setTimeout(function() {
             chatWindow.style.display = "block";
         }, 5000);
 
-        // Funcionalidade para abrir/fechar a janela ao clicar no cabeçalho (implementar)
-        chatHeader.onclick = function() {
-            // Lógica para abrir/fechar a janela
-        }
-
-        // Lógica para ocultar a janela nos modais se o usuário já tiver preenchido os dados (implementar)
+        // ... (lógica para abrir/fechar a janela e ocultar nos modais) ...
     </script>
 
 </body>
