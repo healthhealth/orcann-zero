@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrCann - Cannabis Medicinal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: #f5f5f5;
             color: #333;
             display: flex;
@@ -15,7 +16,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            text-align: center; 
+            text-align: center;  
         }
 
         h1 {
@@ -28,10 +29,12 @@
             font-size: 1.2rem;
             max-width: 800px;
             margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #555;
         }
 
         .button {
-            background-color: #d4af37;
+            background-color: #007bff; /* Azul para contraste */
             color: #fff;
             padding: 1rem 2rem;
             border: none;
@@ -39,34 +42,108 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
         .button:hover {
-            background-color: #c79f36;
+            background-color: #0069d9;
         }
 
-        .link {
-            color: #002366;
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #ddd;
+            width: 80%; 
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            position: relative;
+            top: 10px;
+            left: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
             text-decoration: none;
-            margin-top: 1rem;
-            display: block; 
         }
 
-        .link:hover {
-            text-decoration: underline;
+        /* Estilo para o currículo dentro do modal */
+        .modal-content p {
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .modal-content h2 {
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <h1>OrCann</h1> 
+    <h1>OrCann</h1>  
     <p>Ainda estamos em construção.</p>
     <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e psiquiatria.</p>
-    <a href="https://www.linkedin.com/in/drgustavomendes/" class="button">Clique aqui para conhecer seu LinkedIn.</a>
+    <a href="https://www.linkedin.com/in/drgustavomendes/" class="button">Clique aqui para conhecer seu LinkedIn</a>
     <br>
     <a href="https://cal.com/drgustavomendes" class="button">Agende sua consulta</a>
-<br>
-   <a href="https://wa.me/5511965461146" target="_blank">Abrir no WhatsApp</a>
+    <br>
+    <a href="https://wa.me/5511965461146" target="_blank" class="button">Abrir no WhatsApp</a>
+    <br>
+
+    <button id="openModal" class="button">Currículo</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Currículo - Dr. Gustavo Mendes e Silva</h2>
+            <embed src="curriculo (4).pdf" width="100%" height="600px" type="application/pdf">
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("openModal");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
