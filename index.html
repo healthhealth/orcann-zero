@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrCann - Cannabis Medicinal</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png"> 
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -21,7 +22,7 @@
 
         h1 {
             font-size: 3rem;
-            color: #333;
+            color: #333; 
             margin-bottom: 1rem;
         }
 
@@ -34,21 +35,24 @@
         }
 
         .button {
-            background-color: #007bff; /* Azul para contraste */
+            background-color: rgba(0, 123, 255, 0.8); /* Azul com transparência */
             color: #fff;
             padding: 1rem 2rem;
             border: none;
             border-radius: 5px;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             display: inline-block;
             margin-bottom: 1rem;
+            backdrop-filter: blur(10px); /* Efeito de blur para o glassmorfismo */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
 
         .button:hover {
-            background-color: #0069d9;
+            background-color: rgba(0, 105, 217, 0.9);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
         }
 
         .modal {
@@ -101,6 +105,10 @@
         .modal-content h2 {
             color: #333;
         }
+
+        #whatsapp-modal .modal-content {
+          text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -108,27 +116,46 @@
     <h1>OrCann</h1>  
     <p>Ainda estamos em construção.</p>
     <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e psiquiatria.</p>
+
+    <button id="openModal" class="button">Currículo</button> 
+    <br>
+    <a href="#" class="button" id="openWhatsappModal">Abrir no WhatsApp</a>
+    <br>
+    <a href="#" class="button" id="openCalModal">Agende sua consulta</a>
+    <br>
     <a href="https://www.linkedin.com/in/drgustavomendes/" class="button">Clique aqui para conhecer seu LinkedIn</a>
     <br>
-    <a href="https://cal.com/drgustavomendes" class="button">Agende sua consulta</a>
-    <br>
-    <a href="https://wa.me/5511965461146" target="_blank" class="button">Abrir no WhatsApp</a>
-    <br>
-
-    <button id="openModal" class="button">Currículo</button>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Currículo - Dr. Gustavo Mendes e Silva</h2>
-            <embed src="curriculo (4).pdf" width="100%" height="600px" type="application/pdf">
+            <p>Insira o código do currículo aqui.</p> 
+        </div>
+    </div>
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Entre em contato pelo WhatsApp</h2>
+            <p>Gostaria de agendar uma consulta ou tirar dúvidas? Entre em contato conosco pelo WhatsApp!</p>
+            <a href="https://wa.me/5511965461146" target="_blank" class="button">Abrir WhatsApp</a>
+        </div>
+    </div>
+
+    <div id="cal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agende sua consulta</h2>
+            <iframe src="https://cal.com/drgustavomendes" width="100%" height="600px" frameborder="0"></iframe> 
         </div>
     </div>
 
     <script>
+        // Modal do Currículo
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("openModal");
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("close")[0]; 
 
         btn.onclick = function() {
             modal.style.display = "block";
@@ -141,6 +168,44 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+
+        // Modal do WhatsApp
+        var whatsappModal = document.getElementById("whatsapp-modal");
+        var whatsappBtn = document.getElementById("openWhatsappModal");
+        var whatsappSpan = document.getElementsByClassName("close")[1]; 
+
+        whatsappBtn.onclick = function() {
+            whatsappModal.style.display = "block";
+        }
+
+        whatsappSpan.onclick = function() {
+            whatsappModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == whatsappModal) {
+                whatsappModal.style.display = "none";
+            }
+        }
+
+        // Modal do Cal.com
+        var calModal = document.getElementById("cal-modal");
+        var calBtn = document.getElementById("openCalModal");
+        var calSpan = document.getElementsByClassName("close")[2]; 
+
+        calBtn.onclick = function() {
+            calModal.style.display = "block";
+        }
+
+        calSpan.onclick = function() {
+            calModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == calModal) {
+                calModal.style.display = "none";
             }
         }
     </script>
