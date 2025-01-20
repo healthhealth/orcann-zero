@@ -129,8 +129,10 @@
 
     /* Footer */
     footer {
-      background-color: #333;
-      color: #fff;
+      background-color: #f0f5f0;
+      /* Cor de fundo do body */
+      color: #333;
+      /* Cor do texto do body */
       text-align: center;
       padding: 3px 0;
       /* Altura reduzida */
@@ -151,7 +153,7 @@
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 2;
       /* Acima do footer */
-      display: none;
+      /* display: none; */
     }
 
     .chat-header {
@@ -165,6 +167,13 @@
 
     .chat-content {
       padding: 10px;
+      display: none;
+      /* Conteúdo inicialmente oculto */
+    }
+
+    .chat-content.active {
+      display: block;
+      /* Exibe o conteúdo quando ativo */
     }
   </style>
 </head>
@@ -175,18 +184,25 @@
     <h1>OrCann</h1>
   </header>
 
-  <p>Ainda estamos em construção.</p>
-  <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e
-    psiquiatria.</p>
+  <main>
+    <p>Ainda estamos em construção.</p>
+    <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e
+      psiquiatria.</p>
 
-  <button id="openModal" class="button">Currículo</button>
-  <br>
-  <a href="#" class="button" id="openWhatsappModal">Abrir no WhatsApp</a>
-  <br>
-  <a href="#" class="button" id="openCalModal">Agendar sua consulta</a>
-  <br>
-  <a href="https://www.linkedin.com/in/drgustavomendes/" class="button">Clique aqui para conhecer seu LinkedIn</a>
-  <br>
+    <button id="openModal" class="button">Currículo</button>
+    <br>
+    <a href="#" class="button" id="openWhatsappModal">Abrir no WhatsApp</a>
+    <br>
+    <a href="#" class="button" id="openCalModal">Agendar sua consulta</a>
+    <br>
+    <a href="https://www.linkedin.com/in/drgustavomendes/" class="button">Clique aqui para conhecer seu LinkedIn</a>
+    <br>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 OrCann</p>
+  </footer>
+
 
   <div id="myModal" class="modal">
     <div class="modal-content">
@@ -223,85 +239,90 @@
     </div>
     <div class="chat-content">
       <div class="chatbot-message">Olá! 👋 Como posso te ajudar?</div>
-    </div>
+      </div>
   </div>
 
-  <footer>
-    <p>&copy; 2023 OrCann</p>
-  </footer>
+
 
   <script>
-        // Modal do Currículo
-        var curriculumModal = document.getElementById("myModal");
-        var curriculumBtn = document.getElementById("openModal"); 
-        var curriculumSpan = document.getElementsByClassName("close")[0]; 
+    // Modal do Currículo
+    var curriculumModal = document.getElementById("myModal");
+    var curriculumBtn = document.getElementById("openModal");
+    var curriculumSpan = document.getElementsByClassName("close")[0];
 
-        curriculumBtn.onclick = function() {
-            curriculumModal.style.display = "block";
-        }
+    curriculumBtn.onclick = function () {
+      curriculumModal.style.display = "block";
+    }
 
-        curriculumSpan.onclick = function() {
-            curriculumModal.style.display = "none";
-        }
+    curriculumSpan.onclick = function () {
+      curriculumModal.style.display = "none";
+    }
 
-        // Modal do WhatsApp
-        var whatsappModal = document.getElementById("whatsapp-modal");
-        var whatsappBtn = document.getElementById("openWhatsappModal");
-        var whatsappSpan = document.getElementsByClassName("close")[1]; 
+    // Modal do WhatsApp
+    var whatsappModal = document.getElementById("whatsapp-modal");
+    var whatsappBtn = document.getElementById("openWhatsappModal");
+    var whatsappSpan = document.getElementsByClassName("close")[1];
 
-        whatsappBtn.onclick = function() {
-            whatsappModal.style.display = "block";
-        }
+    whatsappBtn.onclick = function () {
+      whatsappModal.style.display = "block";
+    }
 
-        whatsappSpan.onclick = function() {
-            whatsappModal.style.display = "none";
-        }
+    whatsappSpan.onclick = function () {
+      whatsappModal.style.display = "none";
+    }
 
-        // Opções do WhatsApp com mensagens pré-definidas
-        var whatsappOptions = document.querySelectorAll("#whatsapp-modal .whatsapp-options button");
-        whatsappOptions.forEach(function(option) {
-            option.onclick = function() {
-                var message = this.dataset.message;
-                window.open("https://wa.me/5511965461146?text=" + encodeURIComponent(message), "_blank");
-            }
-        });
+    // Opções do WhatsApp com mensagens pré-definidas
+    var whatsappOptions = document.querySelectorAll("#whatsapp-modal .whatsapp-options button");
+    whatsappOptions.forEach(function (option) {
+      option.onclick = function () {
+        var message = this.dataset.message;
+        window.open("https://wa.me/5511965461146?text=" + encodeURIComponent(message), "_blank");
+      }
+    });
 
-        // Modal do Cal.com
-        var calModal = document.getElementById("cal-modal");
-        var calBtn = document.getElementById("openCalModal");
-        var calSpan = document.getElementsByClassName("close")[2]; 
+    // Modal do Cal.com
+    var calModal = document.getElementById("cal-modal");
+    var calBtn = document.getElementById("openCalModal");
+    var calSpan = document.getElementsByClassName("close")[2];
 
-        calBtn.onclick = function() {
-            calModal.style.display = "block";
-        }
+    calBtn.onclick = function () {
+      calModal.style.display = "block";
+    }
 
-        calSpan.onclick = function() {
-            calModal.style.display = "none";
-        }
+    calSpan.onclick = function () {
+      calModal.style.display = "none";
+    }
 
-        // Fechamento dos modais ao clicar fora
-        window.onclick = function(event) {
-            if (event.target == curriculumModal) {
-                curriculumModal.style.display = "none";
-            }
-            if (event.target == whatsappModal) {
-                whatsappModal.style.display = "none";
-            }
-            if (event.target == calModal) {
-                calModal.style.display = "none";
-            }
-        }
+    // Fechamento dos modais ao clicar fora
+    window.onclick = function (event) {
+      if (event.target == curriculumModal) {
+        curriculumModal.style.display = "none";
+      }
+      if (event.target == whatsappModal) {
+        whatsappModal.style.display = "none";
+      }
+      if (event.target == calModal) {
+        calModal.style.display = "none";
+      }
+    }
 
-        // Janela Flutuante Conversacional
-        var chatWindow = document.getElementById("chatWindow");
-        var chatHeader = document.querySelector(".chat-header");
+    // Janela Flutuante Conversacional
+    var chatWindow = document.getElementById("chatWindow");
+    var chatHeader = document.querySelector(".chat-header");
+    var chatContent = document.querySelector(".chat-content");
 
-        setTimeout(function() {
-            chatWindow.style.display = "block";
-        }, 5000);
+    // Exibir a janela após 5 segundos
+    /* setTimeout(function() {
+      chatWindow.style.display = "block";
+    }, 5000); */
 
-        // ... (lógica para abrir/fechar a janela e ocultar nos modais) ...
-    </script>
+    // Funcionalidade para abrir/fechar a janela ao clicar no cabeçalho
+    chatHeader.onclick = function () {
+      chatContent.classList.toggle("active");
+    }
+
+    // Lógica para ocultar a janela nos modais (implementar)
+  </script>
 </body>
 
 </html>
