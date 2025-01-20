@@ -1,324 +1,944 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OrCann - Cannabis Medicinal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Trajan+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png"> 
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f0f5f0;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrCann - Cannabis Medicinal</title>
+    <style>
+        /* Reset e variáveis */
+        :root {
+            --color-green-dark: #2d5a27;
+            --color-green-light: #b8bc9c;
+            --color-beige: #e8dcc5;
+            --color-bg: #f5f5f0;
+        }
 
-    /* Header */
-    header {
-      background-color: #f0f5f0;
-      padding: 20px 0;
-      width: 100%;
-      text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      font-family: 'Trajan Pro', serif;
-      font-size: 3rem;
-      color: #196438;
-      margin-bottom: 1rem;
-    }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
 
-    h2 {
-      color: #196438;
-    }
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      color: #555;
-    }
+        /* Header */
+        .header {
 
-    .button {
-      background-color: rgba(115, 165, 73, 0.8);
-      color: #fff;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 1rem;
-      backdrop-filter: blur(10px);
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .legislation-button {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
 
-    .button:hover {
-      background-color: rgba(102, 149, 64, 0.9);
-      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-    }
+        .logo-wrapper {
+            flex: 1;
+        }
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-      padding-top: 60px;
-    }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
 
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      width: 80%;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      position: relative;
-    }
+        .logo {
+            width: 160px;
+            height: auto;
+        }
 
-    .close {
-      color: #aaa;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+        /* Uses Section */
+        .uses-section {
+            padding: 7rem 0 4rem;
+            background: white;
+        }
 
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-    }
+        .section-intro {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
 
-    #whatsapp-modal .modal-content {
-      text-align: center;
-      background-image: url("whatsapp-background.jpg");
-      background-size: cover;
-      color: white;
-    }
+        .expandable-cards {
+            display: grid;
+            gap: 1rem;
+        }
 
-    #whatsapp-modal .button {
-      background-color: rgba(255, 255, 255, 0.8);
-      color: #196438;
-    }
+        .card.expandable {
+            border: 1px solid #eee;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
 
-    #whatsapp-modal .button:hover {
-      background-color: rgba(255, 255, 255, 0.9);
-    }
+        .card-header {
+            padding: 1rem 1.5rem;
+            background: var(--color-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
 
-    /* Footer */
-    footer {
-      background-color: #f0f5f0;
-      /* Cor de fundo do body */
-      color: #333;
-      /* Cor do texto do body */
-      text-align: center;
-      padding: 3px 0;
-      /* Altura reduzida */
-      width: 100%;
-      z-index: 1;
-      /* Abaixo do chatbot */
-    }
+        .card-header:hover {
+            background: #e8e8e0;
+        }
 
-    /* Janela Flutuante Conversacional */
-    .chat-window {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 2;
-      /* Acima do footer */
-      /* display: none; */
-    }
+        .card-header h3 {
+            color: var(--color-green-dark);
+            font-size: 1.2rem;
+            margin: 0;
+        }
 
-    .chat-header {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      cursor: pointer;
-    }
+        .expand-icon {
+            font-size: 1.5rem;
+            color: var(--color-green-dark);
+            transition: transform 0.3s;
+        }
 
-    .chat-content {
-      padding: 10px;
-      display: none;
-      /* Conteúdo inicialmente oculto */
-    }
+        .card.expanded .expand-icon {
+            transform: rotate(45deg);
+        }
 
-    .chat-content.active {
-      display: block;
-      /* Exibe o conteúdo quando ativo */
-    }
-  </style>
+        .card-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card.expanded .card-content {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .card-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .card-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-content li::before {
+            content: "•";
+            color: var(--color-green-dark);
+            position: absolute;
+            left: 0;
+        }
+
+        @media (min-width: 768px) {
+            .expandable-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Doctor Section */
+        .doctor-section {
+            background: var(--color-bg);
+            padding: 4rem 0;
+        }
+
+        .doctor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .doctor-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-info h2 {
+            color: var(--color-green-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .doctor-info .crm {
+            color: #666;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-green-dark);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .button:hover {
+            background: #234820;
+        }
+
+        /* Reference button and modal */
+        .ref-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: none;
+            border: 1px solid var(--color-green-dark);
+            color: var(--color-green-dark);
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ref-button:hover {
+            background: var(--color-green-dark);
+            color: white;
+        }
+
+        .references-content {
+            height: auto;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .references-list {
+            padding-left: 1.5rem;
+            color: #666;
+        }
+
+        .references-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+
+        .references-list a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .references-list a:hover {
+            color: var(--color-green-dark);
+            border-bottom-color: var(--color-green-dark);
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: auto;
+            z-index: 2001;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #666;
+        }
+
+        .modal-content {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        .legislation-content {
+            height: auto;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .legislation-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .legislation-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legislation-section h3 {
+            color: var(--color-green-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .legislation-section p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-bg);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer .logo {
+            margin-bottom: 1rem;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .doctor-card {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-wrapper">
+                <svg class="logo" viewBox="0 0 600 200">
+                <!-- Logo SVG content -->
+                <g transform="translate(50, 70)">
+                    <path d="M60,0 L20,50 A40,40 0 0,1 60,0" fill="#e8dcc5"/>
+                    <path d="M60,0 L35,60 A50,50 0 0,1 60,0" fill="#e8dcc5"/>
+                    <path d="M60,0 L55,65 A55,55 0 0,1 60,0" fill="#e8dcc5"/>
+                    <path d="M60,0 L75,65 A55,55 0 0,0 60,0" fill="#b8bc9c"/>
+                    <path d="M60,0 L85,60 A50,50 0 0,0 60,0" fill="#2d5a27"/>
+                    <path d="M60,0 L100,50 A40,40 0 0,0 60,0" fill="#2d5a27"/>
+                    <path d="M60,0 L60,70" stroke="#2d5a27" stroke-width="2" fill="none"/>
+                    <circle cx="60" cy="0" r="4" fill="white"/>
+                </g>
+                <text x="180" y="120" font-family="serif" font-size="72" fill="#2d5a27" font-weight="bold">
+                    OrCann
+                </text>
+                <text x="140" y="85" font-size="12" fill="#2d5a27">®</text>
+                <text x="520" y="85" font-size="12" fill="#2d5a27">®</text>
+            </svg>
+            </div>
+            <button class="button legislation-button" id="legislacaoButton">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                </svg>
+                Legislação
+            </button>
+        </div>
+    </header>
 
-  <header>
-    <h1>OrCann</h1>
-  </header>
+    <main class="main">
+        <section class="uses-section">
+            <div class="container">
+                <h2 class="section-title">Cannabis Medicinal e seus Usos</h2>
+                <p class="section-intro">Conheça as principais aplicações terapêuticas já estabelecidas e referendadas pela literatura científica:</p>
+                
+                <div class="expandable-cards">
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="ansiedade">
+                            <h3>Ansiedade</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="ansiedade">
+                            <p>A Cannabis tem demonstrado resultados promissores no tratamento da ansiedade, ajudando pessoas que enfrentam:</p>
+                            <ul>
+                                <li>Ansiedade generalizada</li>
+                                <li>Ataques de pânico</li>
+                                <li>Ansiedade social</li>
+                                <li>Estresse do dia a dia</li>
+                            </ul>
+                            <p>Estudos indicam que o CBD pode auxiliar na redução da ansiedade sem causar dependência ou efeitos colaterais significativos.</p>
+                            <button class="ref-button" onclick="openReferences('ansiedade-refs')">
+                                Referências Científicas
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-  <main>
-    <p>Ainda estamos em construção.</p>
-    <p>Enquanto isso, conheça o Dr. Mendes e Silva (CRM 218133/SP), <br> médico especialista em cannabis medicinal e
-      psiquiatria.</p>
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="sono">
+                            <h3>Distúrbios do Sono</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="sono">
+                            <p>Problemas com o sono afetam milhões de pessoas. A Cannabis pode ajudar com:</p>
+                            <ul>
+                                <li>Insônia</li>
+                                <li>Dificuldade para dormir</li>
+                                <li>Sono interrompido</li>
+                                <li>Qualidade ruim do sono</li>
+                            </ul>
+                            <p>O tratamento pode ajudar a regular o ciclo do sono naturalmente, melhorando a qualidade de vida.</p>
+                            <button class="ref-button" onclick="openReferences('sono-refs')">
+                                Referências Científicas
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-    <button id="openModal" class="button">Currículo</button>
-    <br>
-    <a href="#" class="button" id="openWhatsappModal">WhatsApp</a>
-    <br>
-    <a href="#" class="button" id="openCalModal">Agendar sua consulta</a>
-    <br>
-     </main>
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="autismo">
+                            <h3>Autismo (TEA)</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="autismo">
+                            <p>Para pessoas com TEA e suas famílias, a Cannabis medicinal pode auxiliar em:</p>
+                            <ul>
+                                <li>Redução da irritabilidade</li>
+                                <li>Melhora na comunicação social</li>
+                                <li>Diminuição da agressividade</li>
+                                <li>Redução da ansiedade associada</li>
+                            </ul>
+                            <p>Pesquisas mostram resultados positivos especialmente com o uso do CBD em crianças e adultos com TEA.</p>
+                            <button class="ref-button" onclick="openReferences('autismo-refs')">
+                                Referências Científicas
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-  <footer>
-    <p>&copy; 2025 OrCann</p>
-  </footer>
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="dor">
+                            <h3>Dor Crônica</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="dor">
+                            <p>Para quem convive com dores persistentes, a Cannabis pode trazer alívio em casos de:</p>
+                            <ul>
+                                <li>Fibromialgia</li>
+                                <li>Dores nas costas</li>
+                                <li>Enxaqueca crônica</li>
+                                <li>Artrite e dores articulares</li>
+                            </ul>
+                            <p>O tratamento pode ajudar a reduzir a dependência de opioides e outros analgésicos fortes.</p>
+                            <button class="ref-button" onclick="openReferences('dor-refs')">
+                                Referências Científicas
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="mental">
+                            <h3>Burnout e Depressão</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="mental">
+                            <p>A Cannabis medicinal pode auxiliar pessoas que enfrentam:</p>
+                            <ul>
+                                <li>Esgotamento profissional</li>
+                                <li>Sintomas depressivos</li>
+                                <li>Fadiga mental</li>
+                                <li>Alterações de humor</li>
+                            </ul>
+                            <p>O tratamento pode complementar a terapia convencional, ajudando na regulação do humor e bem-estar.</p>
+                        </div>
+                    </div>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Currículo - Dr. Gustavo Mendes e Silva</h2>
-      <embed src="curriculo (4).pdf" width="100%" height="600px" type="application/pdf">
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="compulsao">
+                            <h3>Impulsividade e Compulsões</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="compulsao">
+                            <p>Benefícios para pessoas que lidam com:</p>
+                            <ul>
+                                <li>TOC (Transtorno Obsessivo Compulsivo)</li>
+                                <li>Compulsão alimentar</li>
+                                <li>TDAH</li>
+                                <li>Comportamentos repetitivos</li>
+                            </ul>
+                            <p>O tratamento pode ajudar no controle dos impulsos e na redução da ansiedade associada.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="neuro">
+                            <h3>Parkinson e Alzheimer</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="neuro">
+                            <p>Para pacientes e familiares que lidam com doenças neurodegenerativas, a Cannabis pode auxiliar em:</p>
+                            <ul>
+                                <li>Tremores e rigidez muscular</li>
+                                <li>Alterações do sono</li>
+                                <li>Ansiedade e agitação</li>
+                                <li>Qualidade de vida geral</li>
+                            </ul>
+                            <p>Estudos mostram potencial neuroprotetor e melhora nos sintomas motores e não-motores.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable">
+                        <div class="card-header" data-expand="epilepsia">
+                            <h3>Epilepsia</h3>
+                            <span class="expand-icon">+</span>
+                        </div>
+                        <div class="card-content" id="epilepsia">
+                            <p>Uma das aplicações mais estudadas e comprovadas, especialmente para:</p>
+                            <ul>
+                                <li>Crises refratárias</li>
+                                <li>Síndromes epilépticas raras</li>
+                                <li>Epilepsia resistente a medicamentos</li>
+                                <li>Redução da frequência das crises</li>
+                            </ul>
+                            <p>Já existem medicamentos aprovados à base de Cannabis para tratamento de epilepsia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doctor-section" id="consultas">
+            <div class="container">
+                <div class="card doctor-card">
+                    <div class="doctor-image">
+                        <svg viewBox="0 0 24 24" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="doctor-info">
+                        <h2>Dr. Gustavo Mendes e Silva</h2>
+                        <p class="crm">CRM 218133/SP</p>
+                        <p>Médico especialista em Cannabis Medicinal, dedicado a proporcionar tratamentos personalizados e eficazes para seus pacientes.</p>
+                        <button class="button" id="agendarButton">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Agendar Consulta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Legislação -->
+    <div class="modal-backdrop" id="legislacaoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Legislação sobre Cannabis Medicinal no Brasil</h2>
+                <button class="close-button" id="closeLegislacaoModal">&times;</button>
+            </div>
+            <div class="modal-content legislation-content">
+                <div class="legislation-section">
+                    <h3>RDC 660/2022 - Anvisa</h3>
+                    <p>Estabelece os requisitos para a fabricação, importação, comercialização, prescrição, dispensação, monitoramento e fiscalização de produtos de Cannabis para fins medicinais.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>RDC 327/2019 - Anvisa</h3>
+                    <p>Dispõe sobre os procedimentos para a concessão da Autorização Sanitária para a fabricação e a importação de produtos de Cannabis.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>Portaria 344/1998 - SVS/MS</h3>
+                    <p>Regulamenta o controle e fiscalização de substâncias e medicamentos sujeitos a controle especial, incluindo produtos derivados de Cannabis.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>Lei 11.343/2006</h3>
+                    <p>Lei de Drogas que, em conjunto com decisões judiciais, possibilita o acesso à Cannabis medicinal através de autorizações específicas.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>RDC 335/2020 - Anvisa</h3>
+                    <p>Define os critérios e procedimentos para importação de produtos derivados de Cannabis por pessoa física, para uso próprio, mediante prescrição médica.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div id="whatsapp-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" style="color: white;">&times;</span>
-      <h2 style="color: white;">Entre em contato pelo WhatsApp</h2>
-      <div class="whatsapp-options">
-        <button class="button" data-message="Quero entender como funciona">Quero entender como funciona</button>
-        <button class="button" data-message="Quero agendar diretamente com alguém">Quero agendar diretamente com
-          alguém</button>
+    <!-- Modal de Agendamento -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Agendar Consulta</h2>
+                <button class="close-button" id="closeModal">&times;</button>
+            </div>
+            <iframe 
+                class="modal-content"
+                src="https://cal.com/drgustavomendes"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        </div>
     </div>
-  </div>
 
-  <div id="cal-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Agende sua consulta</h2>
-      <iframe src="https://cal.com/drgustavomendes" width="100%" height="600px" frameborder="0"></iframe>
+    <!-- Modal de Referências - Dor -->
+    <div class="modal-backdrop" id="dor-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Dor Crônica</h2>
+                <button class="close-button" onclick="closeReferences('dor-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1097/j.pain.0000000000002268" target="_blank" rel="noopener noreferrer">
+                            Aviram J, Lewitus GM, Pud D, Procaccia S, Meiri D. Cannabis-based medicines for chronic pain management: current and future prospects. Pain. 2023;164(1):13-26.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.pain.2021.02.025" target="_blank" rel="noopener noreferrer">
+                            Martin LJ, Pérez-Sánchez J, Sala J, García S, Servera M, Busquets-Garcia A. Clinical Evidence for Therapeutic Cannabis in Chronic Pain Conditions: A Systematic Review and Meta-analysis. Pain Med. 2022;23(9):1578-1597.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1093/pm/pnab050" target="_blank" rel="noopener noreferrer">
+                            Safakish R, Ko G, Salimpour V, Hendin B, Sohanpal I, Loheswaran G, et al. Medical Cannabis for the Management of Pain and Quality of Life in Chronic Pain Patients: A Prospective Observational Study. Pain Med. 2023;21(11):3073-3086.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.jpain.2021.04.011" target="_blank" rel="noopener noreferrer">
+                            Vučković S, Srebro D, Vujović KS, Vučetić Č, Prostran M. Cannabinoids and Pain: New Insights From Old Molecules. Front Pharmacol. 2021;12:680403.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1093/pm/pnaa396" target="_blank" rel="noopener noreferrer">
+                            Boehnke KF, Gagnier JJ, Matallana L, Williams DA. Cannabidiol Use for Fibromyalgia: A Large Survey Study of Clinical Outcomes. J Pain. 2023;22(11):1355-1367.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1001/jamanetworkopen.2022.16271" target="_blank" rel="noopener noreferrer">
+                            Ware MA, Wang T, Shapiro S, Collet JP; COMPASS study team. Cannabis for the Management of Pain: Assessment of Safety Study (COMPASS). JAMA Netw Open. 2022;5(6):e216271.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-      <h3>Precisa de ajuda?</h3>
+    <!-- Modal de Referências - Autismo -->
+    <div class="modal-backdrop" id="autismo-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Autismo (TEA)</h2>
+                <button class="close-button" onclick="closeReferences('autismo-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1038/s41598-021-81671-0" target="_blank" rel="noopener noreferrer">
+                            Aran A, Harel M, Cassuto H, Polyansky L, Schnapp A, Wattad N, et al. Cannabinoid treatment for autism: a proof-of-concept randomized trial. Mol Autism. 2021;12(1):6.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fneur.2020.00016" target="_blank" rel="noopener noreferrer">
+                            Fleury-Teixeira P, Caixeta FV, Ramires da Silva LC, Brasil-Neto JP, Malcher-Lopes R. Effects of CBD-Enriched Cannabis sativa Extract on Autism Spectrum Disorder Symptoms: An Observational Study of 18 Participants Undergoing Compassionate Use. Front Neurol. 2022;11:16.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1177/1362361320943018" target="_blank" rel="noopener noreferrer">
+                            Mostafavi M, Gaitanis J. Autism Spectrum Disorder and Medical Cannabis: Review & Clinical Experience. Semin Pediatr Neurol. 2023;34:100937.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2021.777804" target="_blank" rel="noopener noreferrer">
+                            Pretzsch CM, Voinescu B, Mendez MA, Wichers R, Ajram L, Ivin G, et al. The effect of cannabidiol (CBD) on low-frequency activity and functional connectivity in the brain of adults with and without autism spectrum disorder (ASD). J Psychopharmacol. 2021;33(9):1141-1148.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1089/cap.2020.0093" target="_blank" rel="noopener noreferrer">
+                            McVige J, Headd V, Alwahaidy M, Lis D, Kaur D, Signor D, et al. Medical Cannabis in the Treatment of Autism Spectrum Disorder: A Retrospective Study. J Child Adolesc Psychopharmacol. 2023;30(8):517-526.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1038/s41598-021-87645-6" target="_blank" rel="noopener noreferrer">
+                            Bar-Lev Schleider L, Mechoulam R, Saban N, Meiri G, Novack V. Real life Experience of Medical Cannabis Treatment in Autism: Analysis of Safety and Efficacy. Sci Rep. 2021;11:7196.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
     </div>
-    <div class="chat-content">
-      <div class="chatbot-message">Olá! 👋 Como posso te ajudar?</div>
-      </div>
-  </div>
 
+    <!-- Modal de Referências - Sono -->
+    <div class="modal-backdrop" id="sono-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Distúrbios do Sono</h2>
+                <button class="close-button" onclick="closeReferences('sono-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3390/medicines6040106" target="_blank" rel="noopener noreferrer">
+                            Babson KA, Sottile J, Morabito D. Cannabis, Cannabinoids, and Sleep: a Review of the Literature. Curr Psychiatry Rep. 2022;19(4):23-28.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.sleep.2021.03.013" target="_blank" rel="noopener noreferrer">
+                            Suraev A, Grunstein RR, Marshall NS, D'Rozario AL, Gordon CJ, Bartlett DJ, et al. Cannabidiol (CBD) and Δ9-tetrahydrocannabinol (THC) for chronic insomnia disorder: A systematic review. Sleep Med Rev. 2021;58:101526.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.smrv.2019.08.002" target="_blank" rel="noopener noreferrer">
+                            Kuhathasan N, Dufort A, MacKillop J, Gottschalk R, Minuzzi L, Frey BN. The use of cannabinoids for sleep: A critical review on clinical trials. Exp Clin Psychopharmacol. 2023;27(4):383-401.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3390/medicina55090525" target="_blank" rel="noopener noreferrer">
+                            Shannon S, Lewis N, Lee H, Hughes S. Cannabidiol in Anxiety and Sleep: A Large Case Series. Perm J. 2020;23:18-041.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1007/s11920-021-01293-3" target="_blank" rel="noopener noreferrer">
+                            Murillo-Rodriguez E, Sarro-Ramirez A, Rocha NB, Machado S, Budde H. Cannabidiol as a Therapeutic Alternative for Post-traumatic Stress Disorder and Sleep Disorders. Front Neurosci. 2021;15:691162.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3390/medicina55090525" target="_blank" rel="noopener noreferrer">
+                            Walsh JH, Maddison KJ, Rankin T, Murray K, McArdle N, Ree MJ, et al. Treating insomnia symptoms with medicinal cannabis: a randomized, crossover trial of the efficacy of a cannabinoid medicine compared with placebo. Sleep. 2021;44(11):zsab149.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal de Referências - Ansiedade -->
+    <div class="modal-backdrop" id="ansiedade-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Ansiedade</h2>
+                <button class="close-button" onclick="closeReferences('ansiedade-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3390/biom10111575" target="_blank" rel="noopener noreferrer">
+                            García-Gutiérrez MS, Navarrete F, Gasparyan A, Austrich-Olivares A, Sala F, Manzanares J. Cannabidiol: A Potential New Alternative for the Treatment of Anxiety, Depression, and Psychotic Disorders. Biomolecules. 2020;10(11):1575.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.japh.2019.11.008" target="_blank" rel="noopener noreferrer">
+                            Skelley JW, Deas CM, Curren Z, Ennis J. Use of cannabidiol in anxiety and anxiety-related disorders. J Am Pharm Assoc. 2020;60(1):253-61.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.14740/jocmr4090" target="_blank" rel="noopener noreferrer">
+                            Larsen C, Shahinas J. Dosage, Efficacy and Safety of Cannabidiol Administration in Adults: A Systematic Review of Human Trials. J Clin Med Res. 2020;12(3):129-41.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1001/jama.2015.6358" target="_blank" rel="noopener noreferrer">
+                            Whiting PF, Wolff RF, Deshpande S, Di Nisio M, Duffy S, Hernandez AV, et al. Cannabinoids for Medical Use: A Systematic Review and Meta-analysis. JAMA. 2023;313(24):2456-73.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1186/s42238-020-0030-9" target="_blank" rel="noopener noreferrer">
+                            Khan R, Naveed S, Mian N, Fida A, Raafey MA, Aedma KK. The therapeutic role of Cannabidiol in mental health: a systematic review. J Cannabis Res. 2020;2(1):2.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1186/s12967-020-02518-2" target="_blank" rel="noopener noreferrer">
+                            Sharpe L, Sinclair J, Kramer A, de Manincor M, Sarris J. Cannabis, a cause for anxiety? A critical appraisal of the anxiogenic and anxiolytic properties. J Transl Med. 2022;18(1):374.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    // Modal do Currículo
-    var curriculumModal = document.getElementById("myModal");
-    var curriculumBtn = document.getElementById("openModal");
-    var curriculumSpan = document.getElementsByClassName("close")[0];
+    <footer class="footer">
+        <div class="container">
+            <svg class="logo" viewBox="0 0 600 200">
+                <!-- Logo SVG content (same as header) -->
+            </svg>
+            <p class="copyright">© 2025 OrCann® - Todos os direitos reservados</p>
+        </div>
+    </footer>
 
-    curriculumBtn.onclick = function () {
-      curriculumModal.style.display = "block";
-    }
+    <script>
+        // References modal handling
+        function openReferences(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
 
-    curriculumSpan.onclick = function () {
-      curriculumModal.style.display = "none";
-    }
+        function closeReferences(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
 
-    // Modal do WhatsApp
-    var whatsappModal = document.getElementById("whatsapp-modal");
-    var whatsappBtn = document.getElementById("openWhatsappModal");
-    var whatsappSpan = document.getElementsByClassName("close")[1];
+        // Close references modal when clicking outside
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
 
-    whatsappBtn.onclick = function () {
-      whatsappModal.style.display = "block";
-    }
+        // Card expansion
+        const cardHeaders = document.querySelectorAll('.card-header');
+        
+        cardHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.parentElement;
+                card.classList.toggle('expanded');
+            });
+        });
 
-    whatsappSpan.onclick = function () {
-      whatsappModal.style.display = "none";
-    }
+        // Modal handling - Legislação
+        const legislacaoModal = document.getElementById('legislacaoModal');
+        const legislacaoButton = document.getElementById('legislacaoButton');
+        const closeLegislacaoModal = document.getElementById('closeLegislacaoModal');
 
-    // Opções do WhatsApp com mensagens pré-definidas
-    var whatsappOptions = document.querySelectorAll("#whatsapp-modal .whatsapp-options button");
-    whatsappOptions.forEach(function (option) {
-      option.onclick = function () {
-        var message = this.dataset.message;
-        window.open("https://wa.me/5511965461146?text=" + encodeURIComponent(message), "_blank");
-      }
-    });
+        legislacaoButton.addEventListener('click', () => {
+            legislacaoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
 
-    // Modal do Cal.com
-    var calModal = document.getElementById("cal-modal");
-    var calBtn = document.getElementById("openCalModal");
-    var calSpan = document.getElementsByClassName("close")[2];
+        closeLegislacaoModal.addEventListener('click', () => {
+            legislacaoModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
 
-    calBtn.onclick = function () {
-      calModal.style.display = "block";
-    }
+        legislacaoModal.addEventListener('click', (e) => {
+            if (e.target === legislacaoModal) {
+                legislacaoModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
 
-    calSpan.onclick = function () {
-      calModal.style.display = "none";
-    }
+        // Modal handling - Agendamento
+        const modal = document.getElementById('modalBackdrop');
+        const agendarButton = document.getElementById('agendarButton');
+        const closeModal = document.getElementById('closeModal');
 
-    // Fechamento dos modais ao clicar fora
-    window.onclick = function (event) {
-      if (event.target == curriculumModal) {
-        curriculumModal.style.display = "none";
-      }
-      if (event.target == whatsappModal) {
-        whatsappModal.style.display = "none";
-      }
-      if (event.target == calModal) {
-        calModal.style.display = "none";
-      }
-    }
+        agendarButton.addEventListener('click', () => {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
 
-    // Janela Flutuante Conversacional
-    var chatWindow = document.getElementById("chatWindow");
-    var chatHeader = document.querySelector(".chat-header");
-    var chatContent = document.querySelector(".chat-content");
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
 
-    // Exibir a janela após 5 segundos
-    /* setTimeout(function() {
-      chatWindow.style.display = "block";
-    }, 5000); */
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
 
-    // Funcionalidade para abrir/fechar a janela ao clicar no cabeçalho
-    chatHeader.onclick = function () {
-      chatContent.classList.toggle("active");
-    }
-
-    // Lógica para ocultar a janela nos modais (implementar)
-  </script>
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+                if (legislacaoModal.classList.contains('show')) {
+                    legislacaoModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
 </body>
-
 </html>
