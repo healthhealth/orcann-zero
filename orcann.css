@@ -1,0 +1,190 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f0f5f0; /* Cor de fundo clara */
+  color: #333; /* Cor do texto escura para contraste */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center; 
+}
+
+/* Header */
+header {
+  background-color: #f0f5f0; /* Mesma cor do fundo para integrar */
+  padding: 20px 0; 
+  width: 100%;
+  text-align: center;
+  position: fixed; /* Fixar o header no topo */
+  top: 0;
+  left: 0;
+  z-index: 100; /* Garantir que o header fique acima de outros elementos */
+  width: 100%; /* Ocupar toda a largura da tela */
+}
+
+h1 {
+  font-family: 'Trajan Pro', serif;
+  font-size: 3rem; 
+  color: #196438; /* Cor do logo */
+  margin-bottom: 1rem; 
+}
+
+h2 {
+  color: #196438; /* Cor do logo */
+}
+
+p {
+  font-size: 1.2rem; 
+  max-width: 800px; 
+  margin-bottom: 2rem; 
+  line-height: 1.6; 
+  color: #555; /* Cor de texto neutra */
+}
+
+/* Botões com efeito glassmorfismo */
+.button {
+  background: rgba(115, 165, 73, 0.8); /* Cor do logo com transparência */
+  color: #fff; 
+  padding: 1rem 2rem; 
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(10px); /* Efeito de blur */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: rgba(102, 149, 64, 0.9);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.25); /* Fundo branco com transparência */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Sombra suave */
+  backdrop-filter: blur(4px); /* Efeito de blur */
+  -webkit-backdrop-filter: blur(4px); /* Compatibilidade com Safari */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18); 
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer; /* Indicar que o card é clicável */
+  transition: transform 0.3s ease; /* Adicionar uma transição suave */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Levantar o card levemente ao passar o mouse */
+}
+
+/* Modais */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4); 
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 80%; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Estilização específica para o modal do WhatsApp */
+#whatsapp-modal .modal-content {
+  text-align: center;
+  background-image: url("whatsapp-background.jpg"); /* Substitua pela sua imagem */
+  background-size: cover; 
+  color: white;
+}
+
+#whatsapp-modal .button {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #196438; 
+}
+
+#whatsapp-modal .button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Footer */
+footer {
+  background-color: #f0f5f0; 
+  color: #333; 
+  text-align: center;
+  padding: 3px 0; 
+  width: 100%;
+  z-index: 1; 
+}
+
+/* Janela Flutuante Conversacional */
+.chat-window {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2; 
+}
+
+.chat-header {
+  background-color: #007bff; /* Cor de destaque para o cabeçalho */
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-content {
+  padding: 10px;
+  display: none; /* Conteúdo inicialmente oculto */
+}
+
+.chat-content.active {
+  display: block; /* Exibe o conteúdo quando ativo */
+}
+
+/* Responsividade */
+@media (max-width: 768px) { 
+  .card {
+    flex-direction: column; /* Cards em coluna na versão mobile */
+  }
+}
