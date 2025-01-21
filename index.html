@@ -41,18 +41,21 @@
         }
 @media (max-width: 768px) {
     .header-buttons {
+        display: flex;
         flex-direction: row;  /* Mantém os botões lado a lado */
-        justify-content: flex-end; /* Mantém o alinhamento à direita */
+        justify-content: flex-end; /* Alinha os botões à direita */
         gap: 8px; /* Espaçamento entre os botões */
-        flex-wrap: wrap; /* Evita quebra indesejada se o espaço for muito pequeno */
+        flex-wrap: nowrap; /* Impede quebra de linha */
     }
 
     .legislation-button, .world-button {
-        width: auto; /* Mantém o tamanho conforme o conteúdo */
-        text-align: center;
+        flex: 1 1 auto;  /* Permite que os botões se redimensionem conforme o espaço disponível */
+        max-width: 140px; /* Define um limite máximo para não ficarem muito pequenos */
+        padding: 0.5rem 1rem; /* Ajusta o preenchimento para economizar espaço */
+        font-size: 0.75rem; /* Reduz um pouco o tamanho da fonte para melhor ajuste */
+        white-space: nowrap; /* Evita que o texto quebre */
     }
-}
-            
+}    
         .logo-wrapper {
             flex: 1;
         }
