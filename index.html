@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrCann - Cannabis Medicinal</title>
-    <style>
+<style>
         /* Reset e variáveis */
         :root {
             --color-green-dark: #2d5a27;
@@ -32,57 +32,14 @@
             padding: 0 1rem;
         }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        /* Header */
+        .header {
 
-.header-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-}
+        .legislation-button {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
 
-.legislation-button, .world-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--color-green-dark);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.legislation-button:hover, .world-button:hover {
-    background: #234820;
-}
-
-@media (max-width: 768px) {
-    .header-buttons {
-        flex-direction: row;
-        justify-content: center;
-    }
-    .legislation-button, .world-button {
-        width: auto;
-        text-align: center;
-    }
-}
         .logo-wrapper {
             flex: 1;
         }
@@ -203,6 +160,7 @@
             background: var(--color-bg);
             padding: 4rem 0;
         }
+
         .doctor-card {
             display: flex;
             flex-direction: column;
@@ -413,7 +371,7 @@
         .show {
             display: block;
         }
-   </style>
+    </style>
 </head>
 <body>
     <header class="header">
