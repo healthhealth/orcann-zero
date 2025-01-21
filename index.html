@@ -33,12 +33,39 @@
         }
 
         /* Header */
-        .header {
+    .header-buttons {
+    display: flex;
+    gap: 10px; /* Adiciona espaçamento entre os botões */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha se necessário */
+}
 
-        .legislation-button {
-            font-size: 0.875rem;
-            padding: 0.5rem 1rem;
-        }
+.legislation-button, .world-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-green-dark);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .header-buttons {
+        flex-direction: column; /* Empilha os botões na vertical em telas menores */
+        gap: 5px;
+    }
+
+    .legislation-button, .world-button {
+        width: 100%; /* Garante que os botões ocupem toda a largura da tela */
+        text-align: center;
+    }
+}
 
         .logo-wrapper {
             flex: 1;
