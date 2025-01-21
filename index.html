@@ -33,12 +33,12 @@
         }
 
         /* Header */
-       .header-buttons {
+.header-buttons {
     display: flex;
     gap: 10px;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
 }
 
 .legislation-button, .world-button {
@@ -59,13 +59,14 @@
 .legislation-button:hover, .world-button:hover {
     background: #234820;
 }
-        @media (max-width: 768px) {
+
+@media (max-width: 768px) {
     .header-buttons {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
+        justify-content: center;
     }
     .legislation-button, .world-button {
-        width: 90%;
+        width: auto;
         text-align: center;
     }
 }
