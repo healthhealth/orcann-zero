@@ -39,7 +39,20 @@
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
+@media (max-width: 768px) {
+    .header-buttons {
+        flex-direction: row;  /* Mantém os botões lado a lado */
+        justify-content: flex-end; /* Mantém o alinhamento à direita */
+        gap: 8px; /* Espaçamento entre os botões */
+        flex-wrap: wrap; /* Evita quebra indesejada se o espaço for muito pequeno */
+    }
 
+    .legislation-button, .world-button {
+        width: auto; /* Mantém o tamanho conforme o conteúdo */
+        text-align: center;
+    }
+}
+            
         .logo-wrapper {
             flex: 1;
         }
