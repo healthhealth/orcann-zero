@@ -4,7 +4,7 @@
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrCann - Cannabis Medicinal</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="https://photos.google.com/u/1/photo/AF1QipPukcmkpyhl44Gx9Qi3N9VNzCZe3ZQH2Zu3jbRg">
 <style>
         /* Reset e variáveis */
         :root {
@@ -393,25 +393,32 @@
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="/" class="logo-wrapper">
+            <div class="logo-wrapper">
   <img src="https://lh3.googleusercontent.com/pw/AP1GczM8d9HfBcUOawu2CS55dyDFPh4oYbr6P4rgWDpc1yTgUgW40GQedUTPtAr5nqTpUvdS57SarPBjO1ZruTkia_qH37ZSVLbzUpDmmpgakWgEpwMsphAjXvEZhv9zeWdubwxnUr-pGgBdT7QZDMKwntw=w1200-h628-s-no-gm?authuser=0" alt="Logo OrCann" class="logo">
-            </a>
-            <nav aria-label="Main Navigation">
-                <ul class="header-buttons">
-                    <li><button class="button legislation-button" id="legislacaoButton">Legislação</button></li>
-                    <li><button class="button world-button" id="mundoButton">Mundo</button></li>
-                    <li><a href="#consultas" class="button">Consultas</a></li>
-                </ul>
-            </nav>
+            </div>
+            <div class="header-buttons">
+                <button class="button legislation-button" id="legislacaoButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+                    </svg>
+                    Legislação
+                </button>
+                <button class="button world-button" id="mundoButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    Mundo
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
-        <h1>OrCann - Cannabis Medicinal</h1>
-
-        <article class="uses-section">
+    <main class="main">
+        <section class="uses-section">
             <div class="container">
-                <h2>Cannabis Medicinal e seus Usos</h2>
+                <h2 class="section-title">Cannabis Medicinal e seus Usos</h2>
                 <p class="section-intro">Conheça as principais aplicações terapêuticas já estabelecidas e referendadas pela literatura científica:</p>
                 
                 <div class="expandable-cards">
@@ -616,9 +623,9 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
 
-        <article class="doctor-section" id="consultas">
+        <section class="doctor-section" id="consultas">
             <div class="container">
                 <div class="card doctor-card">
                     <div class="doctor-image">
@@ -652,8 +659,495 @@
                     </div>
                 </div>
             </div>
-        </article>
+        </section>
     </main>
+
+    <!-- Modal de Legislação -->
+    <div class="modal-backdrop" id="legislacaoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Legislação sobre Cannabis Medicinal no Brasil</h2>
+                <button class="close-button" id="closeLegislacaoModal">&times;</button>
+            </div>
+            <div class="modal-content legislation-content">
+                <div class="legislation-section">
+                    <h3>RDC 660/2022 - Anvisa</h3>
+                    <p>Estabelece os requisitos para a fabricação, importação, comercialização, prescrição, dispensação, monitoramento e fiscalização de produtos de Cannabis para fins medicinais.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>RDC 327/2019 - Anvisa</h3>
+                    <p>Dispõe sobre os procedimentos para a concessão da Autorização Sanitária para a fabricação e a importação de produtos de Cannabis.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>Portaria 344/1998 - SVS/MS</h3>
+                    <p>Regulamenta o controle e fiscalização de substâncias e medicamentos sujeitos a controle especial, incluindo produtos derivados de Cannabis.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>Lei 11.343/2006</h3>
+                    <p>Lei de Drogas que, em conjunto com decisões judiciais, possibilita o acesso à Cannabis medicinal através de autorizações específicas.</p>
+                </div>
+
+                <div class="legislation-section">
+                    <h3>RDC 335/2020 - Anvisa</h3>
+                    <p>Define os critérios e procedimentos para importação de produtos derivados de Cannabis por pessoa física, para uso próprio, mediante prescrição médica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Agendamento -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Agendar Consulta</h2>
+                <button class="close-button" id="closeModal">&times;</button>
+            </div>
+            <iframe 
+                class="modal-content"
+                src="https://cal.com/drgustavomendes"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+
+    <!-- Modal do Currículo -->
+    <div class="modal-backdrop" id="curriculoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Currículo - Dr. Gustavo Mendes e Silva</h2>
+                <button class="close-button" onclick="closeReferences('curriculoModal')">&times;</button>
+            </div>
+            <div class="modal-content curriculum-content">
+                <div class="curriculum-section">
+                    <h3>Formação Acadêmica</h3>
+                    <ul class="curriculum-list">
+                        <li>y</li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3>Experiência Profissional</h3>
+                    <ul class="curriculum-list">
+                        <li></li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3>Áreas de Atuação</h3>
+                    <ul class="curriculum-list">
+                        <li></li>
+                    </ul>
+                </div>
+
+                <div class="curriculum-section">
+                    <h3>Pesquisa e Publicações</h3>
+                    <ul class="curriculum-list">
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Mundo -->
+    <div class="modal-backdrop" id="mundoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Cannabis Medicinal no Mundo</h2>
+                <button class="close-button" onclick="closeReferences('mundoModal')">&times;</button>
+            </div>
+            <div class="modal-content world-content">
+                <div class="world-section">
+                    <h3>Países com Programas Estabelecidos</h3>
+                    <div class="world-grid">
+                        <div class="country-card">
+                            <h4>Israel</h4>
+                            <p>Pioneiro em pesquisa e desenvolvimento desde 1960. Possui um dos programas mais avançados do mundo, com ampla cobertura de condições médicas.</p>
+                        </div>
+                        <div class="country-card">
+                            <h4>Canadá</h4>
+                            <p>Sistema regulamentado desde 2001. Permite cultivo próprio com autorização e possui ampla rede de dispensários licenciados.</p>
+                        </div>
+                        <div class="country-card">
+                            <h4>Alemanha</h4>
+                            <p>Desde 2017, permite prescrição médica e cobertura por planos de saúde. Foco em qualidade e segurança dos produtos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="world-section">
+                    <h3>Avanços Recentes</h3>
+                    <ul class="world-list">
+                        <li>Tailândia (2022): Descriminalização e incentivo à pesquisa médica</li>
+                        <li>Portugal (2023): Ampliação do programa medicinal</li>
+                        <li>Austrália (2023): Facilitação do acesso via prescrição</li>
+                    </ul>
+                </div>
+
+                <div class="world-section">
+                    <h3>Tendências Globais</h3>
+                    <p>Movimento crescente de regulamentação com foco em:</p>
+                    <ul class="world-list">
+                        <li>Pesquisa científica e desenvolvimento</li>
+                        <li>Controle de qualidade e padronização</li>
+                        <li>Acesso facilitado via sistema de saúde</li>
+                        <li>Educação médica continuada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Epilepsia -->
+    <div class="modal-backdrop" id="epilepsia-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Epilepsia</h2>
+                <button class="close-button" onclick="closeReferences('epilepsia-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1016/j.seizure.2021.02.018" target="_blank" rel="noopener noreferrer">
+                            Szaflarski JP, Bebin EM, Cutter G, DeWolfe J, Dure LS, Gaston TE, et al. Long-term safety and treatment effects of cannabidiol in children and adults with treatment-resistant epilepsies. Epilepsia. 2021;62(2):419-431.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1111/epi.16524" target="_blank" rel="noopener noreferrer">
+                            Thiele EA, Marsh ED, French JA, Mazurkiewicz-Beldzinska M, Benbadis SR, Joshi C, et al. Cannabidiol in patients with seizures associated with Lennox-Gastaut syndrome: A randomised, double-blind, placebo-controlled phase 3 trial. Lancet. 2023;391(10125):1085-1096.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.eplepsyres.2021.106682" target="_blank" rel="noopener noreferrer">
+                            Silvestro S, Mammana S, Cavalli E, Bramanti P, Mazzon E. Use of Cannabidiol in the Treatment of Epilepsy: Efficacy and Security in Clinical Trials. Molecules. 2022;24(8):1459.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1212/WNL.0000000000011850" target="_blank" rel="noopener noreferrer">
+                            Gaston TE, Szaflarski JP. Cannabis for the Treatment of Epilepsy: an Update. Curr Neurol Neurosci Rep. 2021;21(8):37.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.seizure.2022.06.004" target="_blank" rel="noopener noreferrer">
+                            O'Connell BK, Gloss D, Devinsky O. Cannabinoids in treatment-resistant epilepsy: A comprehensive review. Epilepsy Behav. 2023;112(Pt B):107391.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fneur.2021.777804" target="_blank" rel="noopener noreferrer">
+                            Klein P, Friedman A, Hamid H, Laxer K, Lhatoo S, Patel A, et al. Cannabidiol in epilepsy: The current state of evidence. Epilepsy Behav. 2021;127:108514.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Impulsividade -->
+    <div class="modal-backdrop" id="compulsao-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Impulsividade e Compulsões</h2>
+                <button class="close-button" onclick="closeReferences('compulsao-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2022.642798" target="_blank" rel="noopener noreferrer">
+                            Kayser RR, Snorrason I, Haney M, Lee FS, Simpson HB. The Endocannabinoid System: A New Treatment Target for Obsessive Compulsive Disorder? Cannabis Cannabinoid Res. 2021;4(2):77-87.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.euroneuro.2020.11.015" target="_blank" rel="noopener noreferrer">
+                            Cooper RE, Williams E, Seegobin S, Tye C, Kuntsi J, Asherson P. Cannabinoids in attention-deficit/hyperactivity disorder: A systematic review and meta-analysis. J Psychopharmacol. 2023;37(2):140-153.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2021.664113" target="_blank" rel="noopener noreferrer">
+                            Schlag AK, O'Sullivan SE, Zafar RR, Nutt DJ. Current controversies in medical cannabis: Recent developments in human clinical applications and potential therapeutics. Neuropharmacology. 2021;191:108586.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1176/appi.ajp.2020.19090934" target="_blank" rel="noopener noreferrer">
+                            Crippa JA, Guimarães FS, Campos AC, Zuardi AW. Translational Investigation of the Therapeutic Potential of Cannabidiol (CBD): Toward a New Age. Front Immunol. 2022;9:2009.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2021.620073" target="_blank" rel="noopener noreferrer">
+                            Spechler PA, Orr CA, Chaarani B, Kan KJ, Mackey S, Morton A, et al. Cannabis use in early adolescence: Evidence of amygdala hypersensitivity to signals of threat. Dev Cogn Neurosci. 2021;47:100885.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Parkinson/Alzheimer -->
+    <div class="modal-backdrop" id="neuro-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Parkinson e Alzheimer</h2>
+                <button class="close-button" onclick="closeReferences('neuro-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3233/JPD-202279" target="_blank" rel="noopener noreferrer">
+                            Fahn S, Oakes D, Shoulson I, Kieburtz K, Rudolph A, Lang A, et al. Cannabis Therapy for Motor and Non-Motor Symptoms of Parkinson Disease: A Systematic Review. J Parkinsons Dis. 2021;11(3):1455-1465.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fnagi.2020.00089" target="_blank" rel="noopener noreferrer">
+                            Watt G, Karl T. In vivo Evidence for Therapeutic Properties of Cannabidiol (CBD) for Alzheimer's Disease. Front Pharmacol. 2022;13:681066.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.neuropharm.2021.108586" target="_blank" rel="noopener noreferrer">
+                            Marques EP, Koszewski IJ, Parker LA. Cannabinoids for the Treatment of Behavioral and Psychological Symptoms of Dementia. J Alzheimers Dis. 2023;85(1):19-32.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fphar.2021.641154" target="_blank" rel="noopener noreferrer">
+                            Peres FF, Lima AC, Hallak JEC, Crippa JA, Silva RH, Abílio VC. Cannabidiol as a Promising Strategy to Treat and Prevent Movement Disorders? Front Pharmacol. 2021;11:641154.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3233/JPD-202371" target="_blank" rel="noopener noreferrer">
+                            Buhmann C, Mainka T, Ebersbach G, Gandor F. Evidence for the Use of Cannabinoids in Parkinson's Disease: A Systematic Review. Mov Disord Clin Pract. 2023;6(2):125-136.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fnagi.2021.709468" target="_blank" rel="noopener noreferrer">
+                            Libro R, Diomede F, Scionti D, Piattelli A, Grassi G, Pollastro F. Cannabidiol Modulates Multiple Cellular Targets in Neurodegenerative Disorders: Current Evidence and Perspectives. Front Aging Neurosci. 2021;13:709468.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Mental -->
+    <div class="modal-backdrop" id="mental-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Burnout e Depressão</h2>
+                <button class="close-button" onclick="closeReferences('mental-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1177/0269881120922765" target="_blank" rel="noopener noreferrer">
+                            Walsh Z, Gonzalez R, Crosby K, Thiessen MS, Carroll C, Bonn-Miller MO. Medical cannabis and mental health: A guided systematic review. Clin Psychol Rev. 2023;74:101973.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1038/s41386-021-01142-y" target="_blank" rel="noopener noreferrer">
+                            De Gregorio D, McLaughlin RJ, Posa L, Ochoa-Sanchez R, Enns J, Lopez-Canul M, et al. Cannabidiol modulates serotonergic transmission and reverses both allodynia and anxiety-like behavior in a model of neuropathic pain. Pain. 2021;160(1):136-150.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2022.939090" target="_blank" rel="noopener noreferrer">
+                            Banerjee J, Rao NP, Karmani S, Varambally S. Cannabidiol for Depression: Clinical Evidence and Brain Mechanisms. Front Psychiatry. 2022;13:939090.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.neuropharm.2021.108586" target="_blank" rel="noopener noreferrer">
+                            Sarris J, Galvão-Coelho NL, Sinclair J. Medicinal Cannabis for Psychiatric Disorders: A Clinically-Focused Systematic Review. BMC Psychiatry. 2023;20(1):24.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3390/brainsci12091159" target="_blank" rel="noopener noreferrer">
+                            Martin EL, Strickland JC, Schlienz NJ, Munson J, Jackson H, Bonn-Miller MO, et al. Antidepressant and Anxiolytic Effects of Medicinal Cannabis Use in an Observational Trial. Brain Sci. 2022;12(9):1159.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1080/15504263.2020.1750371" target="_blank" rel="noopener noreferrer">
+                            Lake S, Kerr T, Buxton J, Walsh Z, Marshall B, Wood E, et al. Does cannabis use modify the effect of post-traumatic stress disorder on severe depression and suicidal ideation? Evidence from a population-based cross-sectional study of Canadians. J Psychopharmacol. 2021;34(2):181-188.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Dor -->
+    <div class="modal-backdrop" id="dor-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Dor Crônica</h2>
+                <button class="close-button" onclick="closeReferences('dor-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1097/j.pain.0000000000002268" target="_blank" rel="noopener noreferrer">
+                            Aviram J, Lewitus GM, Pud D, Procaccia S, Meiri D. Cannabis-based medicines for chronic pain management: current and future prospects. Pain. 2023;164(1):13-26.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.pain.2021.02.025" target="_blank" rel="noopener noreferrer">
+                            Martin LJ, Pérez-Sánchez J, Sala J, García S, Servera M, Busquets-Garcia A. Clinical Evidence for Therapeutic Cannabis in Chronic Pain Conditions: A Systematic Review and Meta-analysis. Pain Med. 2022;23(9):1578-1597.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1093/pm/pnab050" target="_blank" rel="noopener noreferrer">
+                            Safakish R, Ko G, Salimpour V, Hendin B, Sohanpal I, Loheswaran G, et al. Medical Cannabis for the Management of Pain and Quality of Life in Chronic Pain Patients: A Prospective Observational Study. Pain Med. 2023;21(11):3073-3086.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.jpain.2021.04.011" target="_blank" rel="noopener noreferrer">
+                            Vučković S, Srebro D, Vujović KS, Vučetić Č, Prostran M. Cannabinoids and Pain: New Insights From Old Molecules. Front Pharmacol. 2021;12:680403.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1093/pm/pnaa396" target="_blank" rel="noopener noreferrer">
+                            Boehnke KF, Gagnier JJ, Matallana L, Williams DA. Cannabidiol Use for Fibromyalgia: A Large Survey Study of Clinical Outcomes. J Pain. 2023;22(11):1355-1367.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1001/jamanetworkopen.2022.16271" target="_blank" rel="noopener noreferrer">
+                            Ware MA, Wang T, Shapiro S, Collet JP; COMPASS study team. Cannabis for the Management of Pain: Assessment of Safety Study (COMPASS). JAMA Netw Open. 2022;5(6):e216271.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Autismo -->
+    <div class="modal-backdrop" id="autismo-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Autismo (TEA)</h2>
+                <button class="close-button" onclick="closeReferences('autismo-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.1038/s41598-021-81671-0" target="_blank" rel="noopener noreferrer">
+                            Aran A, Harel M, Cassuto H, Polyansky L, Schnapp A, Wattad N, et al. Cannabinoid treatment for autism: a proof-of-concept randomized trial. Mol Autism. 2021;12(1):6.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fneur.2020.00016" target="_blank" rel="noopener noreferrer">
+                            Fleury-Teixeira P, Caixeta FV, Ramires da Silva LC, Brasil-Neto JP, Malcher-Lopes R. Effects of CBD-Enriched Cannabis sativa Extract on Autism Spectrum Disorder Symptoms: An Observational Study of 18 Participants Undergoing Compassionate Use. Front Neurol. 2022;11:16.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1177/1362361320943018" target="_blank" rel="noopener noreferrer">
+                            Mostafavi M, Gaitanis J. Autism Spectrum Disorder and Medical Cannabis: Review & Clinical Experience. Semin Pediatr Neurol. 2023;34:100937.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3389/fpsyt.2021.777804" target="_blank" rel="noopener noreferrer">
+                            Pretzsch CM, Voinescu B, Mendez MA, Wichers R, Ajram L, Ivin G, et al. The effect of cannabidiol (CBD) on low-frequency activity and functional connectivity in the brain of adults with and without autism spectrum disorder (ASD). J Psychopharmacol. 2021;33(9):1141-1148.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1089/cap.2020.0093" target="_blank" rel="noopener noreferrer">
+                            McVige J, Headd V, Alwahaidy M, Lis D, Kaur D, Signor D, et al. Medical Cannabis in the Treatment of Autism Spectrum Disorder: A Retrospective Study. J Child Adolesc Psychopharmacol. 2023;30(8):517-526.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1038/s41598-021-87645-6" target="_blank" rel="noopener noreferrer">
+                            Bar-Lev Schleider L, Mechoulam R, Saban N, Meiri G, Novack V. Real life Experience of Medical Cannabis Treatment in Autism: Analysis of Safety and Efficacy. Sci Rep. 2021;11:7196.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Sono -->
+    <div class="modal-backdrop" id="sono-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Distúrbios do Sono</h2>
+                <button class="close-button" onclick="closeReferences('sono-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3390/medicines6040106" target="_blank" rel="noopener noreferrer">
+                            Babson KA, Sottile J, Morabito D. Cannabis, Cannabinoids, and Sleep: a Review of the Literature. Curr Psychiatry Rep. 2022;19(4):23-28.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.sleep.2021.03.013" target="_blank" rel="noopener noreferrer">
+                            Suraev A, Grunstein RR, Marshall NS, D'Rozario AL, Gordon CJ, Bartlett DJ, et al. Cannabidiol (CBD) and Δ9-tetrahydrocannabinol (THC) for chronic insomnia disorder: A systematic review. Sleep Med Rev. 2021;58:101526.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.smrv.2019.08.002" target="_blank" rel="noopener noreferrer">
+                            Kuhathasan N, Dufort A, MacKillop J, Gottschalk R, Minuzzi L, Frey BN. The use of cannabinoids for sleep: A critical review on clinical trials. Exp Clin Psychopharmacol. 2023;27(4):383-401.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3390/medicina55090525" target="_blank" rel="noopener noreferrer">
+                            Shannon S, Lewis N, Lee H, Hughes S. Cannabidiol in Anxiety and Sleep: A Large Case Series. Perm J. 2020;23:18-041.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1007/s11920-021-01293-3" target="_blank" rel="noopener noreferrer">
+                            Murillo-Rodriguez E, Sarro-Ramirez A, Rocha NB, Machado S, Budde H. Cannabidiol as a Therapeutic Alternative for Post-traumatic Stress Disorder and Sleep Disorders. Front Neurosci. 2021;15:691162.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.3390/medicina55090525" target="_blank" rel="noopener noreferrer">
+                            Walsh JH, Maddison KJ, Rankin T, Murray K, McArdle N, Ree MJ, et al. Treating insomnia symptoms with medicinal cannabis: a randomized, crossover trial of the efficacy of a cannabinoid medicine compared with placebo. Sleep. 2021;44(11):zsab149.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Referências - Ansiedade -->
+    <div class="modal-backdrop" id="ansiedade-refs">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Referências Científicas - Ansiedade</h2>
+                <button class="close-button" onclick="closeReferences('ansiedade-refs')">&times;</button>
+            </div>
+            <div class="modal-content references-content">
+                <ol class="references-list">
+                    <li>
+                        <a href="https://doi.org/10.3390/biom10111575" target="_blank" rel="noopener noreferrer">
+                            García-Gutiérrez MS, Navarrete F, Gasparyan A, Austrich-Olivares A, Sala F, Manzanares J. Cannabidiol: A Potential New Alternative for the Treatment of Anxiety, Depression, and Psychotic Disorders. Biomolecules. 2020;10(11):1575.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1016/j.japh.2019.11.008" target="_blank" rel="noopener noreferrer">
+                            Skelley JW, Deas CM, Curren Z, Ennis J. Use of cannabidiol in anxiety and anxiety-related disorders. J Am Pharm Assoc. 2020;60(1):253-61.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.14740/jocmr4090" target="_blank" rel="noopener noreferrer">
+                            Larsen C, Shahinas J. Dosage, Efficacy and Safety of Cannabidiol Administration in Adults: A Systematic Review of Human Trials. J Clin Med Res. 2020;12(3):129-41.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1001/jama.2015.6358" target="_blank" rel="noopener noreferrer">
+                            Whiting PF, Wolff RF, Deshpande S, Di Nisio M, Duffy S, Hernandez AV, et al. Cannabinoids for Medical Use: A Systematic Review and Meta-analysis. JAMA. 2023;313(24):2456-73.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1186/s42238-020-0030-9" target="_blank" rel="noopener noreferrer">
+                            Khan R, Naveed S, Mian N, Fida A, Raafey MA, Aedma KK. The therapeutic role of Cannabidiol in mental health: a systematic review. J Cannabis Res. 2020;2(1):2.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://doi.org/10.1186/s12967-020-02518-2" target="_blank" rel="noopener noreferrer">
+                            Sharpe L, Sinclair J, Kramer A, de Manincor M, Sarris J. Cannabis, a cause for anxiety? A critical appraisal of the anxiogenic and anxiolytic properties. J Transl Med. 2022;18(1):374.
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -664,6 +1158,115 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        // Curriculum modal handling
+        const curriculoModal = document.getElementById('curriculoModal');
+        const curriculoButton = document.getElementById('curriculoButton');
+
+        curriculoButton.addEventListener('click', () => {
+            curriculoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // World modal handling
+        const mundoModal = document.getElementById('mundoModal');
+        const mundoButton = document.getElementById('mundoButton');
+
+        mundoButton.addEventListener('click', () => {
+            mundoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // References modal handling
+        function openReferences(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReferences(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close references modal when clicking outside
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Card expansion
+        const cardHeaders = document.querySelectorAll('.card-header');
+        
+        cardHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.parentElement;
+                card.classList.toggle('expanded');
+            });
+        });
+
+        // Modal handling - Legislação
+        const legislacaoModal = document.getElementById('legislacaoModal');
+        const legislacaoButton = document.getElementById('legislacaoButton');
+        const closeLegislacaoModal = document.getElementById('closeLegislacaoModal');
+
+        legislacaoButton.addEventListener('click', () => {
+            legislacaoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeLegislacaoModal.addEventListener('click', () => {
+            legislacaoModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        legislacaoModal.addEventListener('click', (e) => {
+            if (e.target === legislacaoModal) {
+                legislacaoModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Modal handling - Agendamento
+        const modal = document.getElementById('modalBackdrop');
+        const agendarButton = document.getElementById('agendarButton');
+        const closeModal = document.getElementById('closeModal');
+
+        agendarButton.addEventListener('click', () => {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+                if (legislacaoModal.classList.contains('show')) {
+                    legislacaoModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
